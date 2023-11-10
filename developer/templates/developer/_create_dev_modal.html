@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-dev-modal">
+    Add user
+</button>
+
+<div class="modal fade" id="add-dev-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New developer</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{%url 'developer:create' %}" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
